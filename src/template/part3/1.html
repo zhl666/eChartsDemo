@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>echarts高级用法-多个图表展示数据</title>
+<script src="../../static/js/echarts.min.js"></script>
+</head>
+<body>
+<div id="main" style="width: 1000px;height:500px;"></div>
+<script>
+  const myChart = echarts.init(document.getElementById('main'));
+  const dates = [];
+  const gmvs = [];
+  for(let i = 1; i<=30; i++) {
+    dates.push(i + '日');
+    gmvs.push(Math.random() * 10000)
+  }
+  myChart.setOption({
+    title: {
+      show: true,
+      text: 'GMV当月排行榜',
+    },
+    tooltip: {},
+    xAxis: {// X轴数据展示
+      data: dates,
+    },
+    yAxis: {}, // y轴数据展示
+    series: [{
+      name: '销售额',
+      type: 'line',
+      data: gmvs,
+    },{
+      name: '销售额1',
+      type: 'bar',
+      data: gmvs,
+      color: ['#fa0']
+    },{
+      name: '店铺销售额占比',
+      type: 'pie',
+      radius: '30%',
+      center: ['80%', '25%'],
+      data: [{
+        name: '店铺1',
+        value: 1000,
+      }, {
+        name: '店铺2',
+        value: 5000,
+      }, {
+        name: '店铺3',
+        value: 10000,
+      }],
+    }]
+  });
+</script>
+</body>
+</html>

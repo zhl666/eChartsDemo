@@ -1,0 +1,10 @@
+示例：豆瓣最新热映电影排名分析
+1.webpack按需加载
+2.异步请求数据并显示loading动画
+3.折线图和饼图堆叠展示数据
+4.折线图展示电影评分走势
+5.饼图展示当前评分的国家分布
+
+豆瓣电影接口：http://api.douban.com/v2/movie/top250?start=0&count=100
+
+按需引入模块列表:https://github.com/apache/incubator-echarts/blob/master/index.js

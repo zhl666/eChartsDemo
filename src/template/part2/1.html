@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>柱状图</title>
+  <script src="../../static/js/echarts.min.js"></script>
+</head>
+<body>
+  <div id="demo" style="width: 1000px;height: 300px;"></div>
+  <script>
+    const demo = document.getElementById('demo');
+    const myChart = echarts.init(demo);
+    const dates = [];
+    const gmvs = [];
+    for(let i=1; i<=100; i++){
+      dates.push(i + '日');
+      gmvs.push({
+        name: '销售额' + i,
+        value: Math.random() * 10000
+      });
+    }
+    const option = {
+      // 标题组件
+      title: {
+        text: 'GMV的销售额度',
+      },
+      // x轴数据展示
+      xAxis: {
+        data: dates
+      },
+      // y轴数据展示
+      yAxis: {
+
+      },
+      series: [{
+        name: '销售额',
+        type: 'scatter',
+        data: gmvs
+      }]
+    }
+    myChart.setOption(option);
+  </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>canvas</title>
+</head>
+<body>
+  <canvas id="demo" width="400" height="400">
+    您的浏览器不支持canvas
+  </canvas>
+  <script>
+    const canvas = document.getElementById('demo');
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = 'red';
+    ctx.beginPath();
+    ctx.arc(150, 150, 100, 0, Math.PI*2, true);
+    ctx.closePath();
+    ctx.fill();
+    // ctx.fillRect(0, 0, 150, 75);
+  </script>
+</body>
+</html>

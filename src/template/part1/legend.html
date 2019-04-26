@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>图例组件</title>
+  <script src="../../static/js/echarts.min.js"></script>
+</head>
+<body>
+  <div id="demo" style="width: 1000px;height: 300px;"></div>
+  <script>
+    const demo = document.getElementById('demo');
+    const myChart = echarts.init(demo);
+    const dates = [];
+    const gmvs = [], sales = [];
+    for(let i=1; i<=30; i++){
+      dates.push(i + '日');
+      gmvs.push(Math.random() * 10000);
+      sales.push(Math.random() * 10000);
+    }
+    let data = [gmvs, sales];
+    let seriesData = [];
+    for(let i = 0; i<2; i++) {
+      seriesData.push({
+        name: '销售额' + i,
+        type: 'bar',
+        data: data[Math.round(Math.random())],
+      })
+    }
+    const option = {
+      // 标题组件
+      title: {
+        text: 'GMV的销售额度',
+      },
+      legend: {
+        // type: 'scroll',
+        width: 550,
+        left: 'right',
+        scrollDataIndex: 2,
+        selectedMode: true,
+        selected: {
+          '销售额0':true,
+          '销售额1': false
+        },
+        data: [{
+          name: '销售额0',
+          textStyle: {
+            color: '#fa0'
+          }
+        }]
+      },
+      // x轴数据展示
+      xAxis: {
+        data: dates
+      },
+      // y轴数据展示
+      yAxis: {
+
+      },
+      series: seriesData
+    }
+    myChart.setOption(option);
+  </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>区域缩放组件</title>
+  <script src="../../static/js/echarts.min.js"></script>
+</head>
+<body>
+  <div id="demo" style="width: 1000px;height: 300px;"></div>
+  <script>
+    const demo = document.getElementById('demo');
+    const myChart = echarts.init(demo);
+    const dates = [];
+    const gmvs = [];
+    for(let i=1; i<=30; i++){
+      dates.push(i + '日');
+      gmvs.push(Math.random() * 10000);
+    }
+    const option = {
+      // 标题组件
+      title: {
+        text: 'GMV的销售额度',
+      },
+      // dataZoom: {
+      //   type: 'slider',
+      //   start: 10,
+      //   end: 50,
+      //   zoomLock: false
+      // },
+      visualMap: {
+        type: 'continuous',
+        min: 0,
+        max: 10000,
+        calculable: true,
+        text: ['high', 'low']
+      },
+      // x轴数据展示
+      xAxis: {
+        data: dates
+      },
+      // y轴数据展示
+      yAxis: {
+
+      },
+      series: [{
+        name: '销售额',
+        type: 'bar',
+        data: gmvs
+      }]
+    }
+    myChart.setOption(option);
+  </script>
+</body>
+</html>
